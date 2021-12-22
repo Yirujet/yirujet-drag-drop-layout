@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.drag-layout-container {
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    background-color: #fff;
+    &.has-dragging-node {
+        .dragger-shadow-container {
+            display: block;
+        }
+    }
+    &.grid-line {
+        background-image: linear-gradient(rgba(103, 103, 103, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(103, 103, 103,.1) 1px, transparent 1px);
+    }
+}
+
+.dragger-container, .dragger-shadow-container {
+    position: absolute;
+    box-sizing: border-box;
+    .dragger {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 1);
+        border: 1px dashed #98A2B3;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px 0 rgba(152, 162, 179, .15), 0 2px 2px -1px rgba(152, 162, 179, .3);
+        &:hover {
+            box-shadow: 0 4px 8px 5px rgba(152, 162, 179, .15), 0 2px 2px -1px rgba(152, 162, 179, .3);
+        }
+        .header {
+            padding: 5px;
+            user-select: none;
+            cursor: move;
+            font-weight: 700;
+            font-size: 0.75rem;
+            height: 20px;
+            &:hover {
+                background-color: rgba(24,144,255,.08);
+            }
+            width: calc(100% - 10px);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            border-radius: 4px 4px 0 0;
+            box-sizing: content-box;
+        }
+        .content {
+            position: relative;
+            flex: 1;
+            overflow: auto;
+        }
+        .resize-node {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            z-index: 100;
+            background-color: rgba(24,144,255,0);
+            right: 5px;
+            bottom: 5px;
+            cursor: se-resize;
+            transition: all .3s;
+            border: 2px solid #000;
+            border-left: none;
+            border-top: none;
+            &:hover {
+                width: 15px;
+                height: 15px;
+                right: 0;
+                bottom: 0;
+            }
+        }
+    }
+    .tip {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        transform: translateY(calc(-100% + 8px)) scale(0.6);
+        font-size: 12px;
+    }
+    &.dragging{
+        &:before {
+            z-index: 101;
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            bottom: 5px;
+            right: 5px;
+            background: rgba(119, 188, 253, 1);
+        }
+        .dragger {
+            border: none;
+        }
+    }
+    &.animation-model {
+        transition: all ease .2s;
+    }
+    &.only-view {
+        .dragger {
+            border: 1px solid #ebeef5;
+            .header {
+                cursor: default;
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}
+
