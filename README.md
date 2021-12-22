@@ -1,21 +1,21 @@
-# xw-drag-drop-layout 
+# yirujet-drag-drop-layout 
 Vue实现的拖拽布局组件 
 
 # 使用说明 
 1. 安装
 ```
-npm i xw-drag-drop-layout
+npm i yirujet-drag-drop-layout
 ```
 
 2. 入口文件中引入组件定义
 ```javascript 
-import 'xw-drag-drop-layout'
-import 'xw-drag-drop-layout/dist/xw-drag-drop-layout.css'
+import 'yirujet-drag-drop-layout'
+import 'yirujet-drag-drop-layout/dist/yirujet-drag-drop-layout.css'
 ``` 
 
 3. 使用 
 ```
-<xw-drag-drop-layout></xw-drag-drop-layout>
+<yirujet-drag-drop-layout></yirujet-drag-drop-layout>
 ```
 
 ## 参数说明 
@@ -31,7 +31,7 @@ import 'xw-drag-drop-layout/dist/xw-drag-drop-layout.css'
 
 ## 方法说明 
 > #### setState(states: DragLayoutContainer.states): void  
-> 设置xw-drag-drop-layout组件状态，比如：
+> 设置yirujet-drag-drop-layout组件状态，比如：
 ```javascript 
     this.dragLayoutContainerRef.setState({
         draggerMargin: 5,
