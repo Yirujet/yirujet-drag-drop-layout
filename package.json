@@ -1,6 +1,6 @@
 {
   "name": "yirujet-drag-drop-layout",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "private": false,
   "main": "./dist/yirujet-drag-drop-layout.common.js",
   "files": [

@@ -15,7 +15,7 @@ const DashboardStore = {
         cache: null,
         canExceedHorizontalViewingArea: false,  //  是否可超出水平可视区域
         showGridLine: false, //  是否展示网格线
-        animation: true,    //  是否启动拖拽动画
+        animation: false,    //  是否启动拖拽动画
         mode: null,   //  操作模式：drag、resize
         canvasMode: null,   //  画布模式：preview、design
     },
@@ -71,6 +71,13 @@ const DashboardStore = {
             const nodeY = Math.round(betterRect.top / cellWidth)
             commit('setState', {
                 list: [ ...list, { id, comp, x: nodeX, y: nodeY, w, h, title } ]
+            })
+        },
+        remove({ commit, state }, id) {
+            const { list } = state
+            const index = list.findIndex(item => item.id === id)
+            commit('setState', {
+                list: [...list.slice(0, index), ...list.slice(index + 1)]
             })
         },
         /**

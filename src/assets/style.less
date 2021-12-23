@@ -35,21 +35,61 @@ body {
             box-shadow: 0 4px 8px 5px rgba(152, 162, 179, .15), 0 2px 2px -1px rgba(152, 162, 179, .3);
         }
         .header {
-            padding: 5px;
+            position: relative;
             user-select: none;
             cursor: move;
             font-weight: 700;
             font-size: 0.75rem;
-            height: 20px;
-            &:hover {
-                background-color: rgba(24,144,255,.08);
-            }
-            width: calc(100% - 10px);
+            height: 30px;
+            width: 100%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             border-radius: 4px 4px 0 0;
             box-sizing: content-box;
+            .title {
+                display: block;
+                width: calc(100% - 35px);
+                height: 30px;
+                line-height: 30px;
+                padding-left: 5px;
+                &:hover {
+                    background-color: rgba(24,144,255,.08);
+                }
+            }
+            .remove {
+                display: block;
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                z-index: 9999;
+                border-radius: 0 4px 0 0;
+                background-color: rgba(24,144,255,.08);
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%) rotate(45deg);
+                    width: 1px;
+                    height: 60%;
+                    background-color: #000;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%) rotate(45deg);
+                    width: 60%;
+                    height: 1px;
+                    background-color: #000000;
+                }
+            }
         }
         .content {
             position: relative;
@@ -110,8 +150,14 @@ body {
             border: 1px solid #ebeef5;
             .header {
                 cursor: default;
-                &:hover {
-                    background-color: transparent;
+                .title {
+                    width: calc(100% - 5px);
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+                .remove {
+                    display: none;
                 }
             }
         }

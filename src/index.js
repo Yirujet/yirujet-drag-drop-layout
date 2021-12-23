@@ -116,6 +116,7 @@ const DragLayoutContainer = Vue.component('drag-layout-container', {
                     w: item.w,
                     h: item.h
                 },
+                key: item.id,
                 class: this.currentNode?.id === item.id ? 'dragging' : ''
             }, [h(item.comp.tag, { ...item.comp.data })])
         })

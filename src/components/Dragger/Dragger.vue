@@ -5,7 +5,10 @@
         :style="{ padding,  width,  height, transform }"
     >
         <div class="dragger">
-            <div class="header" @mousedown="handleStartDrag($event)">{{ title }}</div>
+            <div class="header">
+                <span class="title" @mousedown="handleStartDrag($event)">{{ title }}</span>
+                <i class="remove" @click="handleRemove($event)"></i>
+            </div>
             <div class="content">
                 <slot></slot>
             </div>
@@ -90,6 +93,7 @@ export default {
             'resize',
             'endResize'
         ]),
+        ...mapActions('dashboard', ['remove']),
         handleStartDrag(e) {
             if (this.canvasMode !== CANVAS_MODE.DESIGN) return
             this.startDrag(e, this.id)
@@ -120,6 +124,10 @@ export default {
             document.removeEventListener('mouseup', this.handleEndResize)
             document.onselectstart = () => null
             this.endResize(e)
+        },
+        handleRemove(e) {
+            e.stopPropagation()
+            this.remove(this.id)
         }
     }
 }
